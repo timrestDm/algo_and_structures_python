@@ -8,3 +8,18 @@
 то вводятся эти символы. Программа должна вывести на экран любой
 символ алфавита от 'a' до 'f' включительно.
 """
+import random
+
+first= input("Введите первую букву или число: ")
+second = input("Введите вторую букву или число: ")
+
+o_type = input("Выберите тип генерации 'i' - случайное целое число, 'f' - случайное вещественное число,"
+                       "'l' - случайная буква: ")
+
+if o_type.lower() == 'i':
+    print(f"Случайное целое число между числами {first} и {second} = {random.randint(int(first), int(second))}")
+elif o_type.lower() == 'f':
+    print(f"Случайное вещественное число между числами {first} и {second} = {random.uniform(float(first), float(second))}")
+elif o_type.lower() == 'l':
+    print(f"Случайная буква между  {first} и {second} = {chr(random.randint(ord(first), ord(second)))}")
+
