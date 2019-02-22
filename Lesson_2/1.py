@@ -9,3 +9,37 @@
 Также сообщать пользователю о невозможности деления на ноль,
 если он ввел 0 в качестве делителя.
 """
+import operator
+
+a = input("Введите 2 числа через запятую: ")
+sign = input("Введите знак операции ('0' - выход или '+', '-', '*', '/'): ")
+
+def division(x, y):
+    if y != 0:
+        return x / y
+    else:
+        print("На 0 делить нельзя!")
+        return False
+
+operations = {
+    '+': operator.add,
+    '-': lambda x, y: x - y,
+    '*': operator.mul,
+    '/': lambda x, y: division(x, y)
+}
+
+while True:
+    if sign != '0' and sign != '+' and sign != '-' and sign != '*' and sign != '/':
+        print("Вы ввели не верный знак операции. Повторите снова.")
+        sign = input("Введите знак операции ('0' - выход или '+', '-', '*', '/'): ")
+        continue
+    if sign == '0':
+        break
+    else:
+        x = int(a.split(',')[0].strip())
+        y = int(a.split(',')[1].strip())
+        if operations[sign](x, y) != False:
+            print(operations[sign](x, y))
+    a = input("Введите 2 числа через запятую: ")
+    sign = input("Введите знак операции ('0' - выход или '+', '-', '*', '/'): ")
+
