@@ -5,3 +5,22 @@
 (или 0, 3, 4, 5 - если индексация начинается с нуля),
 т.к. именно в этих позициях первого массива стоят четные числа.
 """
+import random
+
+n = int(input("Введите количество элементов массива: "))
+first_list = [random.randint(1, 100) for _ in range(n)]
+
+print(first_list)
+
+# способ 1
+second_list = [i+1 for i in range(n) if first_list[i] % 2 == 0]
+
+print(second_list)
+
+# способ 2
+second_list = []
+for i in range(n):
+    if first_list[i] % 2 == 0:
+        second_list.append(i + 1)
+
+print(second_list)
